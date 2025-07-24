@@ -23,8 +23,21 @@ spring:
       filters: stat,wall,log4j #通过别名的方式配置扩展插件，常用的插件有：监控统计用的filter:stat，日志用的filter:log4j，防御sql注入的filter:wall
       connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000 # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
       useGlobalDataSourceStat: false # 合并多个DruidDataSource的监控数据
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      database: 0
+      timeout: 3000ms
+      jedis:
+        pool:
+          max-active: 10
+          max-idle: 10
+          min-idle: 1
+          time-between-eviction-runs: 10s
   thymeleaf:
     cache: false #关闭模板缓存
+
 ###mybatis-plus
 mybatis-plus:
   configuration:
@@ -39,3 +52,8 @@ mybatis-plus:
       logic-not-delete-value: 1
       # 删除后
       logic-delete-value: 0
+
+gexw:
+  g1:
+    name: aw
+    age: 21

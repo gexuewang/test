@@ -1,5 +1,8 @@
 package com.gexw.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.gexw.DTO.PageData;
+import com.gexw.VO.PageVO;
 import com.gexw.VO.ResultServiceVO;
 import com.gexw.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -16,4 +19,8 @@ public interface IUserService extends IService<User> {
 
 
     ResultServiceVO addUseI(User user);
+
+    PageData<User> getUserPage(Integer pageNum, Integer pageSize);
+
+
 }

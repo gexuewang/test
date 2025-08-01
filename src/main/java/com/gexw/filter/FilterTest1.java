@@ -10,10 +10,9 @@ public class FilterTest1 implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
 
-        response.setContentType("text/html;charset=utf-8");
 
 
-        Object user = request.getAttribute("user");
+
         //放行
         filterChain.doFilter(request, response);
     }

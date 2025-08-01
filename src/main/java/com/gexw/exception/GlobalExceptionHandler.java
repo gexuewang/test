@@ -36,7 +36,7 @@ public class GlobalExceptionHandler {
      * @return 统一的错误响应
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    //@ResponseStatus(HttpStatus.BAD_REQUEST)
     public Result<String> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         // 获取所有字段错误信息
         List<String> errors = e.getBindingResult()
@@ -59,7 +59,7 @@ public class GlobalExceptionHandler {
      * @return 统一的错误响应
      */
     @ExceptionHandler(ConstraintViolationException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    //@ResponseStatus(HttpStatus.BAD_REQUEST)
     public Result<String> handleConstraintViolationException(ConstraintViolationException e) {
         try {
             // 获取所有约束违反信息

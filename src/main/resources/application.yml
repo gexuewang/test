@@ -1,3 +1,5 @@
+
+
 spring:
   datasource:
     url: jdbc:mysql://192.168.64.3:3306/linuxbaes?serverTimezone=Asia/Shanghai&useSSL=false
@@ -23,18 +25,34 @@ spring:
       filters: stat,wall,log4j #通过别名的方式配置扩展插件，常用的插件有：监控统计用的filter:stat，日志用的filter:log4j，防御sql注入的filter:wall
       connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000 # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
       useGlobalDataSourceStat: false # 合并多个DruidDataSource的监控数据
-  data:
-    redis:
-      host: localhost
-      port: 6379
-      database: 0
-      timeout: 3000ms
-      jedis:
-        pool:
-          max-active: 10
-          max-idle: 10
-          min-idle: 1
-          time-between-eviction-runs: 10s
+# 3xx开始才写redis-data-xxx
+#  redis:
+#    host: 192.168.64.3
+#    port: 6379
+#    database: 0
+#    timeout: 3000ms
+#    jedis:
+#      pool:
+#        max-active: 10
+#        max-idle: 10
+#        min-idle: 1
+#        time-between-eviction-runs: 10s
+  redis:
+    cluster:
+      nodes:
+        - 192.168.64.3:6380
+        - 192.168.64.3:6381
+        - 192.168.64.3:6382
+        - 192.168.64.3:6383
+        - 192.168.64.3:6384
+        - 192.168.64.3:6385
+      max-redirects: 3  # 获取失败 最大重定向次数
+    lettuce:
+      pool:
+        max-active: 20 #连接池最大连接数（使用负值表示没有限制）
+        max-idle: 8   #连接池中的最大空闲连接
+        min-idle: 5   # 连接池中的最小空闲连接
+    timeout: 6000   #连接超时时长（毫秒）
   thymeleaf:
     cache: false #关闭模板缓存
 
@@ -53,7 +71,19 @@ mybatis-plus:
       # 删除后
       logic-delete-value: 0
 
+
+
+
 gexw:
   g1:
     name: aw
     age: 21
+    address: 11
+    prefix: 'g1'
+    yewu: 'register:'
+    fastServer: http://192.168.64.3/
+
+server:
+  port: 8081
+
+

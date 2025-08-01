@@ -19,7 +19,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         // 设置CORS头部
         response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, token");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, token, access_token");
         response.setHeader("Access-Control-Max-Age", "3600");
         
         // 处理OPTIONS预检请求
@@ -67,6 +67,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 
             // 将用户ID存储到ThreadLocal中，供后续业务逻辑使用
             ThreadlocalUserId.set(userId.longValue());
+
             
             return true;
             

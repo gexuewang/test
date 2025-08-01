@@ -1,9 +1,7 @@
 package com.gexw.controller;
 
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.gexw.DTO.PageDTO;
-import com.gexw.VO.PageVO;
+import com.gexw.DTO.PageData;
 import com.gexw.VO.ResultServiceVO;
 import com.gexw.entity.User;
 import com.gexw.result.Result;
@@ -32,23 +30,41 @@ public class UserController {
     @GetMapping("/page")
     public Result getUserPage(@RequestParam(defaultValue = "1") Integer pageNum
                                     , @RequestParam(defaultValue = "5") Integer pageSize ){
-        Page<User> page = userService.page(new Page<>(pageNum, pageSize));
-        PageVO pageVO = new PageVO<>();
-        pageVO.setPageNum(Integer.parseInt(pageNum+""));
-        pageVO.setPageSize(Integer.parseInt(pageSize+""));
-        pageVO.setAllRow(page.getTotal()); //总记录数
-        pageVO.setTotalPage(page.getPages()); //总页数
-        pageVO.setData(page.getRecords());
-        return Result.success(pageVO);
+
+        PageData<User> userPage = userService.getUserPage(pageNum, pageSize);
+        return Result.success(userPage);
     }
 
-    @PostMapping("/add")
+    @PostMapping("/add1111")
     public Result addUser(@RequestBody User user){
+        System.out.println(user);
         ResultServiceVO resultServiceVO= userService.addUseI(user);
         if (resultServiceVO.getCode() == 1){
             return Result.success();
         }else {
             return Result.error(resultServiceVO.getMsg());
         }
+    }
+
+
+    @GetMapping("/user/{id}")
+    public Result getUserById(@PathVariable Integer id){
+      User user=  userService.getById(id);
+        System.out.println(user);
+      return Result.success(user);
+    }
+
+
+    @PostMapping("/addorupdate")
+    public Result add(@RequestBody User user){
+        System.out.println(user);
+        userService.saveOrUpdate(user);
+        return Result.success();
+    }
+
+    @DeleteMapping("del/{id}")
+    public Result del(@PathVariable Integer id){
+        userService.removeById(id);
+        return Result.success();
     }
 }

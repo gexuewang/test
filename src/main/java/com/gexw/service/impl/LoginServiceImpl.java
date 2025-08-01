@@ -16,7 +16,7 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public User login(LoginDTO loginDTO) {
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("name", loginDTO.getName());
+        queryWrapper.eq("name", loginDTO.getName()).eq("pwd", loginDTO.getPwd());
         User user = userMapper.selectOne(queryWrapper);
         return user;
     }

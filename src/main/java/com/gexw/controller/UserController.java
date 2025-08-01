@@ -68,19 +68,6 @@ public class UserController {
         return Result.success();
     }
     public static void t1(){
-        System.out.println("11111111" +
-                "11" +
-                "1" +
-                "1" +
-                "1" +
-                "1" +
-                "1" +
-                "" +
-                "1" +
-                "1" +
-                "1" +
-                "1" +
-                "1" +
-                "");
+        System.out.println("11111111");
     }
 }

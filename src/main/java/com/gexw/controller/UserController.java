@@ -80,7 +80,6 @@ public class UserController {
                 "1" +
                 "1" +
                 "1" +
-                "1" +
-                "");
+                "1" );
     }
 }

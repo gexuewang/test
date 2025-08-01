@@ -67,4 +67,20 @@ public class UserController {
         userService.removeById(id);
         return Result.success();
     }
+    public static void t1(){
+        System.out.println("11111111" +
+                "11" +
+                "1" +
+                "1" +
+                "1" +
+                "1" +
+                "1" +
+                "" +
+                "1" +
+                "1" +
+                "1" +
+                "1" +
+                "1" +
+                "");
+    }
 }

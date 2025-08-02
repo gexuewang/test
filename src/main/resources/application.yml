@@ -55,6 +55,10 @@ spring:
     timeout: 6000   #连接超时时长（毫秒）
   thymeleaf:
     cache: false #关闭模板缓存
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
 
 ###mybatis-plus
 mybatis-plus:
